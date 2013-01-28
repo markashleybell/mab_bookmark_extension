@@ -1,0 +1,16 @@
+{
+    "name": "Linx Bookmark 1.1",
+    "description": "Adds the current page to the Linx bookmarking system.",
+    "version": "1.1",
+    "background_page": "background.html",
+    "permissions": [
+        "tabs", 
+        "http://*/*", 
+        "https://*/*"
+    ],
+    "browser_action": {
+        "default_title": "Add To Linx",
+        "default_icon": "icon.png",
+        "popup": "popup.html"
+    }
+}
