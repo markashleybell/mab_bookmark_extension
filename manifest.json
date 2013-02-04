@@ -5,12 +5,12 @@
     "version": "1.1",
     "background": {
         "scripts": ["background.js"],
-        "persistent": false
+        "persistent": true
     },
     "permissions": [
         "tabs", 
-        "http://*/*", 
-        "https://*/*"
+        "http://*/", 
+        "https://*/"
     ],
     "browser_action": {
         "default_title": "Add To Linx",
