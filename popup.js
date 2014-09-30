@@ -22,10 +22,15 @@ function addBookmark() {
     xhr.open('POST', postUrl, true);
     
     // Prepare the data to be POSTed by URLEncoding each field's contents
-    var params = 'title=' + encodeURIComponent(document.getElementById('title').value) + 
-                 '&url=' + encodeURIComponent(document.getElementById('url').value) + 
-                 '&abstract=' + encodeURIComponent(document.getElementById('abstract').value) +
-                 '&tags=' + encodeURIComponent(document.getElementById('tags').value);
+    var title = encodeURIComponent(document.getElementById('title').value);
+    var url = encodeURIComponent(document.getElementById('url').value);
+    var abstract = encodeURIComponent(document.getElementById('abstract').value);
+    var tags = encodeURIComponent(document.getElementById('tags').value);
+    
+    var params = 'title=' + title + 
+                 '&url=' + url + 
+                 '&abstract=' + abstract +
+                 '&tags=' + tags;
     
     // Replace any instances of the URLEncoded space char with +
     params = params.replace(/%20/g, '+');
@@ -42,7 +47,8 @@ function addBookmark() {
                 // If it was a success, close the popup after a short delay
                 statusDisplay.innerHTML = 'Saved!';
                 window.setTimeout(window.close, 1000);
-            } else {// Show what went wrong
+            } else {
+                // Show what went wrong
                 statusDisplay.innerHTML = 'Error saving: ' + xhr.statusText;
             }
         }
@@ -61,8 +67,9 @@ window.addEventListener('load', function(evt) {
     document.getElementById('addbookmark').addEventListener('submit', addBookmark);
     // Get the event page
     chrome.runtime.getBackgroundPage(function(eventPage) {
-        // Call the getPageInfo function in the event page, passing in our onPageDetailsReceived 
-        // function as the callback. This injects content.js into the current tab's HTML
+        // Call the getPageInfo function in the event page, passing in 
+        // our onPageDetailsReceived function as the callback. This injects 
+        // content.js into the current tab's HTML
         eventPage.getPageDetails(onPageDetailsReceived);
     });
 });
