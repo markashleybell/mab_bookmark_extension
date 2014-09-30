@@ -3,7 +3,7 @@
 function onPageDetailsReceived(pageDetails)  { 
     document.getElementById('title').value = pageDetails.title; 
     document.getElementById('url').value = pageDetails.url; 
-    document.getElementById('abstract').innerText = pageDetails.abstract; 
+    document.getElementById('summary').innerText = pageDetails.summary; 
 } 
 
 // Global reference to the status display SPAN
@@ -24,12 +24,12 @@ function addBookmark() {
     // Prepare the data to be POSTed by URLEncoding each field's contents
     var title = encodeURIComponent(document.getElementById('title').value);
     var url = encodeURIComponent(document.getElementById('url').value);
-    var abstract = encodeURIComponent(document.getElementById('abstract').value);
+    var summary = encodeURIComponent(document.getElementById('summary').value);
     var tags = encodeURIComponent(document.getElementById('tags').value);
     
     var params = 'title=' + title + 
                  '&url=' + url + 
-                 '&abstract=' + abstract +
+                 '&summary=' + summary +
                  '&tags=' + tags;
     
     // Replace any instances of the URLEncoded space char with +
